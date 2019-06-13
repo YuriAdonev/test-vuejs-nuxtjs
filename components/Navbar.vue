@@ -14,8 +14,27 @@
           <li class="nav-item">
             <nuxt-link no-prefetch active-class="active" class="nav-link" to="/admin">Admin</nuxt-link>
           </li>
+          <li class="nav-item" v-if="isAuth">
+            <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
+          </li>
         </ul>
       </div>
     </nav>
   </header>
 </template>
+
+<script>
+export default {
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAuth;
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+      this.$router.push('/');
+    }
+  }
+}
+</script>
