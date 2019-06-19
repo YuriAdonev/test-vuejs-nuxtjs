@@ -1,5 +1,5 @@
 
-export default {
+module.exports = {
   mode: 'universal',
   /*
   ** Headers of the page
@@ -23,28 +23,34 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/node_modules/bootstrap/dist/css/bootstrap.min.css'
+    'element-ui/lib/theme-chalk/index.css',
+    '@/theme/index.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/firebase.js'
+    '@/plugins/globals',
+    '@/plugins/axios'
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios'
+    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/axios',
   ],
-
+  /*
+  ** Axios module configuration
+  ** See https://axios.nuxtjs.org/options
+  */
   axios: {
   },
-
   /*
   ** Build configuration
   */
   build: {
+    transpile: [/^element-ui/],
     /*
     ** You can extend webpack config here
     */

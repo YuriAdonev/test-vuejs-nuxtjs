@@ -1,6 +1,6 @@
 # test-vuejs
 
-> My legendary Nuxt.js project
+> My riveting Nuxt.js project
 
 ## Build Setup
 

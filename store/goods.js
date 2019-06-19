@@ -30,7 +30,8 @@ export const state = () => ({
       productPrice: 1643,
       productSelected: false
     }
-  ]
+  ],
+  cart: {}
 })
 
 export const mutations = {

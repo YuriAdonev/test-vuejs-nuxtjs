@@ -11,36 +11,42 @@
 </template>
 
 <script>
-export default {
-  computed: {
-    goods() {
-      return this.$store.getters['goods/goods'];
-    }
-  },
-  methods: {
-    selectItem(currentProduct) {
-      this.$store.commit('goods/selectProduct', currentProduct.productId);
+  export default {
+    computed: {
+      goods() {
+        return this.$store.getters['goods/goods'];
+      }
+    },
+    methods: {
+      selectItem(currentProduct) {
+        this.$store.commit('goods/selectProduct', currentProduct.productId);
+      }
     }
   }
-}
 </script>
 
 <style>
   .goods__list {
+    display: flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
 
     list-style: none;
   }
   .goods__item {
-    margin: 10px;
+    width: 220px;
+    margin: 0 20px 20px 0;
     padding: 10px;
     box-sizing: border-box;
     text-align: center;
-    border: 1px solid lightgrey;
+    border: 2px solid lightgrey;
+  }
+  .goods__item:nth-child(5n) {
+    margin-right: 0;
   }
   .goods__item_selected {
-    border-color: blue;
+    border-color: #ffd04b;
   }
   .goods__price {
     display: block;

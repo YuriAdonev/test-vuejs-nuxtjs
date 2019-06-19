@@ -1,31 +1,27 @@
-export const state = () => ({
-  readSuccessful: false,
-  transactions: []
-})
+const transactions = [];
 
 export const actions = {
-  nuxtServerInit({dispatch}, context) {
-    return Promise.all([
-      dispatch('fetchTransactions', context)
-    ]);
-  },
-  pushTransaction() {
-
-  },
-  async fetchTransactions() {
-    const ref = fireDb.collection("transactions");
-    let snap;
+  async fetchTransactions({commit}) {
     try {
-      snap = await ref.get();
-      console.log(snap);
+      return await this.$axios.$get('/api/transaction/admin/');
     } catch (e) {
-      console.error(e);
+      commit('serError', e, {root: true});
+      throw e;
     }
-    this.transactions = snap.data().text;
-    this.readSuccessful = true;
+  },
+  async createTransaction({commit}, formData) {
+    try {
+      return await this.$axios.$post('/api/transaction', formData);
+    } catch (e) {
+      commit('serError', e, {root: true});
+    }
+  },
+  async cancel({commit}, id) {
+    try {
+      const status = false;
+      return await this.$axios.$put(`/api/transaction/admin/${id}`, {status});
+    } catch (e) {
+      commit('serError', e, {root: true});
+    }
   }
-}
-
-export const getters = {
-  transactions: s => s.transactions
 }
