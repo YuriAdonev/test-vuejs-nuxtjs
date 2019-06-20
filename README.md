@@ -1,3 +1,7 @@
+Для входа в админ панель
+логин: test
+пароль: test
+
 # test-vuejs
 
 > My riveting Nuxt.js project
